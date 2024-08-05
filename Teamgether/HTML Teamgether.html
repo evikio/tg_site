@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teamgether</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #212A47;
+            background-color: #FFFFFF;
+        }
+        header {
+            background-color: #FFFFFF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        header img {
+            height: 50px;
+            width: auto;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        nav a {
+            color: #212A47;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+        }
+        .language-selector {
+            position: relative;
+            display: inline-block;
+        }
+        .language-selector img {
+            width: 30px;
+            height: auto;
+            cursor: pointer;
+        }
+        .language-selector .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 50px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .language-selector .dropdown-content a {
+            color: black;
+            padding: 8px 10px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .language-selector .dropdown-content a img {
+            width: 30px;
+            height: auto;
+        }
+        .language-selector .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .language-selector:hover .dropdown-content {
+            display: block;
+        }
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background-color: #F8F8F8;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            color: #212A47;
+        }
+        .hero p {
+            font-size: 1.2em;
+            color: #464E63;
+        }
+        .hero .cta-buttons {
+            margin-top: 20px;
+        }
+        .cta-button {
+            background-color: #86D2EA;
+            color: #FFFFFF;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1em;
+            margin: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .cta-button-outline {
+            background-color: #FFFFFF;
+            color: #86D2EA;
+            border: 1px solid #86D2EA;
+        }
+        .contact-section {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 50px 20px;
+            background-color: #F8F8F8;
+        }
+        .contact-section .contact-info {
+            max-width: 45%;
+        }
+        .contact-section .contact-info img {
+            max-width: 100%;
+            height: auto;
+        }
+        .contact-section .contact-form {
+            max-width: 45%;
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .contact-section .contact-form h2 {
+            text-align: center;
+        }
+        .contact-section .contact-form p {
+            text-align: center;
+        }
+        .contact-section .contact-form input,
+        .contact-section .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #E0E0E0;
+            border-radius: 5px;
+        }
+        .contact-section .contact-form button {
+            background-color: #86D2EA;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            display: block;
+            margin: 0 auto;
+        }
+        footer {
+            background-color: #F8F8F8;
+            color: #212A47;
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #E0E0E0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="mainlogo.png" alt="Company Logo">
+        <nav>
+            <a href="#product">Product</a>
+            <a href="#faq">FAQ</a>
+            <a href="#about-us">About Us</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+            <a href="#book-demo" class="cta-button">Book a Demo</a>
+            <div class="language-selector">
+                <img src="englishflag.png" alt="English Flag">
+                <div class="dropdown-content">
+                    <a href="#"><img src="greekflag.png" alt="Greek Flag"></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="hero">
+        <h1>Running teams efficiently and effectively, both locally and globally has never been easier.</h1>
+        <div class="cta-buttons">
+            <a href="#book-demo" class="cta-button">Book a Demo</a>
+            <a href="#product" class="cta-button cta-button-outline">Product Overview</a>
+        </div>
+    </div>
+    <section id="contact" class="contact-section">
+        <div class="contact-info">
+            <img src="contactus.png" alt="Contact Us">
+            <h3>Online Services</h3>
+            <p>Email: support@teamgether.com</p>
+            <h3>Online Contact</h3>
+            <p>Phone (USA): +1 234 567 890</p>
+            <p>Phone (UK): +44 123 456 7890</p>
+            <h3>Office Address</h3>
+            <p>123 Main Street, Leicester, LE1 1AB, United Kingdom</p>
+        </div>
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <p>Let's get in touch!</p>
+            <form>
+                <input type="text" name="first-name" placeholder="First Name" required>
+                <input type="text" name="last-name" placeholder="Last Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="text" name="subject" placeholder="Subject" required>
+                <textarea name="message" placeholder="Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Teamgether. Όλα τα δικαιώματα κατοχυρωμένα.</p>
+    </footer>
+</body>
+</html>
