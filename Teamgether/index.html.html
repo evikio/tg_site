@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teamgether</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px; 
+            padding: 0;
+            color: #212A47;
+            background-color: #FFFFFF;
+        }
+        header {
+            background-color: #FFFFFF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px;
+            border-bottom: 1px solid #E0E0E0;
+            position: fixed;
+            width: calc(100% - 80px);
+            top: 0;
+            z-index: 1000;
+        }
+        header img {
+            height: 50px;
+            width: auto;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        nav a {
+            color: #212A47;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: #212A47;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .language-selector {
+            position: relative;
+            display: inline-block;
+        }
+        .language-selector img {
+            width: 30px;
+            height: auto;
+            cursor: pointer;
+        }
+        .language-selector .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 50px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .language-selector .dropdown-content a {
+            color: black;
+            padding: 8px 10px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .language-selector .dropdown-content a img {
+            width: 30px;
+            height: auto;
+        }
+        .language-selector .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .language-selector:hover .dropdown-content {
+            display: block;
+        }
+        .company-id-section {
+            background-color: #86D2EA;
+            padding: 20px;
+            text-align: center;
+            border-radius: 50px;
+            margin: 80px auto 20px; /* Adjusted margin to lower the section */
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .company-id-section p {
+            color: #FFFFFF;
+            font-size: 1.5em;
+            margin-bottom: 10px; /* Increased margin for better spacing */
+        }
+
+        .company-id-input {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .company-id-input input {
+            flex-grow: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 25px 0 0 25px;
+            font-size: 1em;
+        }
+
+        .company-id-input button {
+            padding: 10px 20px;
+            background-color: #5CADD2;
+            color: #FFFFFF; /* White color for the arrow */
+            border: none;
+            border-radius: 0 25px 25px 0;
+            cursor: pointer;
+            font-size: 1.2em; /* Larger font size for the arrow */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background-color: #F8F8F8;
+            margin-top: 100px;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            color: #212A47;
+        }
+        .hero p {
+            font-size: 1.2em;
+            color: #464E63;
+        }
+        .hero .cta-buttons {
+            margin-top: 20px;
+        }
+        .cta-button {
+            background-color: #86D2EA;
+            color: #FFFFFF;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1em;
+            margin: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .cta-button-outline {
+            background-color: #FFFFFF;
+            color: #86D2EA;
+            border: 1px solid #86D2EA;
+        }
+        .overview-section {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #FFFFFF;
+            margin-top: 20px;
+        }
+        .overview-section img {
+            width: 150px; 
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .overview-section p {
+            font-size: 1.2em;
+            color: #212A47;
+            margin: 0;
+            line-height: 1.6;
+        }
+        .why-us-section {
+            padding: 50px 20px;
+            background-color: #F8F8F8;
+            margin-top: 20px;
+        }
+        .why-us-section h2 {
+            text-align: center;
+            color: #212A47;
+            margin-bottom: 30px;
+        }
+        .why-us-feature {
+            margin-bottom: 40px;
+        }
+        .why-us-feature h3 {
+            font-size: 1.5em;
+            color: #212A47;
+            margin-bottom: 10px;
+        }
+        .why-us-feature p {
+            color: #464E63;
+            line-height: 1.6;
+        }
+        .product-section {
+            padding: 50px 20px;
+            background-color: #FFFFFF;
+            margin-top: 20px;
+        }
+        .product-category {
+            margin-bottom: 40px;
+        }
+        .product-category h2 {
+            color: #212A47;
+            border-bottom: 2px solid #86D2EA;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .product-feature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .product-feature img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        .product-feature h3 {
+            margin: 10px 0 5px;
+            color: #212A47;
+        }
+        .product-feature p {
+            margin: 0;
+            color: #464E63;
+        }
+        .product-category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        .faq-section {
+            padding: 50px 20px;
+            background-color: #F8F8F8;
+        }
+        .faq-section h2 {
+            text-align: center;
+            color: #212A47;
+            margin-bottom: 30px;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        .faq-item h3 {
+            font-size: 1.5em;
+            color: #212A47;
+        }
+        .faq-item p {
+            color: #464E63;
+            line-height: 1.6;
+        }
+        .pricing-section {
+            padding: 50px 20px;
+            background-color: #FFFFFF;
+            text-align: center;
+        }
+        .pricing-section h2 {
+            color: #212A47;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        .pricing-section .availability {
+            font-size: 1.2em;
+            color: #464E63;
+            margin-bottom: 40px;
+        }
+        .pricing-bundles {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: nowrap; /* Change to nowrap to keep bundles in one line */
+        }
+        .bundle {
+            background-color: #F8F8F8;
+            border: 1px solid #E0E0E0;
+            border-radius: 10px;
+            padding: 20px;
+            width: 30%; /* Adjust width to keep bundles consistent in a row */
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        .bundle h3 {
+            color: #212A47;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+        .bundle p {
+            color: #464E63;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        .bundle-status {
+            font-size: 1.2em;
+            color: #86D2EA;
+            font-weight: bold;
+        }
+        .contact-section {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 50px 20px;
+            background-color: #F8F8F8;
+        }
+        .contact-info {
+            max-width: 45%;
+        }
+        .contact-info h3 {
+            color: #212A47;
+        }
+        .contact-info p {
+            color: #464E63;
+        }
+        .contact-form {
+            max-width: 45%;
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .contact-form h2 {
+            text-align: center;
+            color: #212A47;
+        }
+        .contact-form p {
+            text-align: center;
+            color: #464E63;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #E0E0E0;
+            border-radius: 5px;
+        }
+        .contact-form button {
+            background-color: #86D2EA;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            display: block;
+            margin: 0 auto;
+        }
+        .book-demo-section {
+            padding: 50px 20px;
+            background-color: #F8F8F8;
+            text-align: center;
+        }
+
+        .book-demo-section h2 {
+            color: #212A47;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .book-demo-section p {
+            font-size: 1.2em;
+            color: #464E63;
+            margin-bottom: 40px;
+        }
+
+        .demo-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .demo-form input,
+        .demo-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #E0E0E0;
+            border-radius: 5px;
+        }
+
+        .demo-form button {
+            background-color: #86D2EA;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            display: block;
+        }
+
+        footer {
+            background-color: #F8F8F8;
+            color: #212A47;
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #E0E0E0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="mainlogo.png" alt="Company Logo">
+        <nav>
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Product</a>
+                <div class="dropdown-content">
+                    <a href="#overview">Overview</a>
+                    <a href="#services">Services</a>
+                </div>
+            </div>
+            <a href="#faq">FAQ</a>
+            <a href="#about-us">About Us</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+            <a href="#book-demo" class="cta-button">Book a Demo</a>
+            <div class="language-selector">
+                <img src="englishflag.png" alt="English Flag">
+                <div class="dropdown-content">
+                    <a href="#"><img src="greekflag.png" alt="Greek Flag"></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Company ID Section -->
+    <div class="company-id-section">
+        <p>Using Teamgether? Enter your Company ID here</p>
+        <div class="company-id-input">
+            <input type="text" placeholder="Company ID">
+            <button>→</button>
+        </div>
+    </div>
+
+    <div class="hero">
+        <h1>Running teams efficiently and effectively, both locally and globally has never been easier.</h1>
+        <div class="cta-buttons">
+            <a href="#book-demo" class="cta-button">Book a Demo</a>
+            <a href="#overview" class="cta-button cta-button-outline">Product Overview</a>
+        </div>
+    </div>
+    <section id="overview" class="overview-section">
+        <img src="mainlogo.png" alt="Company Logo">
+        <p>
+            is an app providing quick communication capabilities among team members to <br>
+            solve problems, exchange ideas, and share common issues through a secure environment.
+        </p>
+    </section>
+    <section id="why-us" class="why-us-section">
+        <h2>Why Us</h2>
+        <div class="why-us-feature">
+            <h3>1. Specific Focus on Team Engagement</h3>
+            <p>stands out by specifically focusing on team communication, collaboration, and engagement.</p>
+        </div>
+        <div class="why-us-feature">
+            <h3>2. Advanced Features and Simplicity</h3>
+            <p>Offers features that foster participation, feedback, and community-building in a simple environment.</p>
+        </div>
+        <div class="why-us-feature">
+            <h3>3. Tailored for Employee Feedback & Idea Generation</h3>
+            <p>Emphasizes gathering feedback and generating impactful ideas through structured processes.</p>
+        </div>
+        <div class="why-us-feature">
+            <h3>4. Unique Customer Experience Focus</h3>
+            <p>Extends beyond internal engagement by addressing customer experience and solving problems.</p>
+        </div>
+        <div class="why-us-feature">
+            <h3>5. Custom-build Configuration</h3>
+            <p>Offers customization tailored to unique team structures, workflows, and engagement goals.</p>
+        </div>
+        <div class="why-us-feature">
+            <h3>6. Feedback and Engage in Meaningful Discussions</h3>
+            <p>Encourages adoption and involvement, leading to higher engagement within teams.</p>
+        </div>
+    </section>
+    <section id="services" class="product-section">
+        <div class="product-category">
+            <h2>Engagement</h2>
+            <div class="product-category-grid">
+                <div class="product-feature">
+                    <img src="brainstorming.png" alt="Brainstorming Icon">
+                    <div>
+                        <h3>Brainstorming</h3>
+                        <p>Encourages team idea generation and enhances collaboration and problem-solving.</p>
+                    </div>
+                </div>
+                <div class="product-feature">
+                    <img src="stories.png" alt="Stories Icon">
+                    <div>
+                        <h3>Stories</h3>
+                        <p>Fosters community by sharing experiences and insights across the organization.</p>
+                    </div>
+                </div>
+                <div class="product-feature">
+                    <img src="announcements.png" alt="Announcements Icon">
+                    <div>
+                        <h3>Announcements</h3>
+                        <p>Enables real-time company-wide updates, ensuring timely communication and alignment.</p>
+                    </div>
+                </div>
+                <div class="product-feature">
+                    <img src="chat.png" alt="Chat Icon">
+                    <div>
+                        <h3>Chat</h3>
+                        <p>Facilitates real-time communication, improving teamwork and fostering belonging.</p>
+                    </div>
+                </div>
+                <div class="product-feature">
+                    <img src="surveysandpolls.png" alt="Surveys and Polls Icon">
+                    <div>
+                        <h3>Surveys and Polls</h3>
+                        <p>Collects employee feedback for data-driven decision-making and sentiment analysis.</p>
+                    </div>
+                </div>
+                <div class="product-feature">
+                    <img src="mediawall.png" alt="Media Wall Icon">
+                    <div>
+                        <h3>Media Wall</h3>
+                        <p>Showcases multimedia content, boosting morale and celebrating achievements.</p>
+                    </div>
+                </div>
+                <div class="product-feature">
+                    <img src="valuesandgoals.png" alt="Values and Goals Icon">
+                    <div>
+                        <h3>Values and Goals</h3>
+                        <p>Communicates core values and goals, enhancing purpose and alignment.</p>
+                    </div>
+                </div>
+                <div class="product-feature">
+                    <img src="badgesandawards.png" alt="Badges and Awards Icon">
+                    <div>
+                        <h3>Badges and Awards</h3>
+                        <p>Recognizes achievements with virtual awards, promoting appreciation and motivation.</p>
+                    </div>
+                </div>
+                <div class="product-feature">
+                    <img src="events.png" alt="Events Icon">
+                    <div>
+                        <h3>Events</h3>
+                        <p>Provides an event calendar to keep employees informed and engaged.</p>
+                    </div>
+                </div>
+                <div class="product-feature">
+                    <img src="employeerecognition.png" alt="Employee Recognition Icon">
+                    <div>
+                        <h3>Employee Recognition</h3>
+                        <p>Establishes a platform for peer recognition, strengthening team morale.</p>
+                    </div>
+                </div>
+                <div class="product-feature">
+                    <img src="yourvoice.png" alt="Your Voice Icon">
+                    <div>
+                        <h3>Your Voice</h3>
+                        <p>Offers a confidential channel for feedback, promoting openness and action.</p>
+                    </div>
+                </div>
+                <div class="product-feature">
+                    <img src="organizationalchart.png" alt="Organizational Chart Icon">
+                    <div>
+                        <h3>Organizational Chart</h3>
+                        <p>Visualizes hierarchy and roles, improving clarity and decision-making.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-category">
+            <h2>For Managers</h2>
+            <div class="product-category-grid">
+                <div class="product-feature">
+                    <img src="360evaluation.png" alt="360 Evaluation Icon">
+                    <div>
+                        <h3>360 Evaluation</h3>
+                        <p>Enables comprehensive performance appraisals, fostering employee development.</p>
+                    </div>
+                </div>
+                <div class="product-feature">
+                    <img src="performancefeedback.png" alt="Performance Feedback Icon">
+                    <div>
+                        <h3>Performance Feedback</h3>
+                        <p>Provides timely feedback, promoting continuous growth and communication.</p>
+                    </div>
+                </div>
+                <div class="product-feature">
+                    <img src="talentgroup.png" alt="Talent Group Icon">
+                    <div>
+                        <h3>Talent Group</h3>
+                        <p>Manages talent groups, identifying leaders and aligning growth with goals.</p>
+                    </div>
+                </div>
+                <div class="product-feature">
+                    <img src="mynotes.png" alt="My Notes Icon">
+                    <div>
+                        <h3>My Notes</h3>
+                        <p>Keeps detailed notes, offering a clear, fact-based view of each employee.</p>
+                    </div>
+                </div>
+                <div class="product-feature">
+                    <img src="ambassadors.png" alt="Ambassadors Icon">
+                    <div>
+                        <h3>Ambassadors</h3>
+                        <p>Empowers employee ambassadors to promote the organization and boost engagement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-category">
+            <h2>Digital Space</h2>
+            <div class="product-category-grid">
+                <div class="product-feature">
+                    <img src="knowledgebase.png" alt="Knowledge Base Icon">
+                    <div>
+                        <h3>Knowledge Base</h3>
+                        <p>Centralizes information, improving efficiency and empowering self-service learning.</p>
+                    </div>
+                </div>
+                <div class="product-feature">
+                    <img src="documentstorage.png" alt="Document Storage Icon">
+                    <div>
+                        <h3>Document Storage</h3>
+                        <p>Securely manages documents, enhancing collaboration and ensuring compliance.</p>
+                    </div>
+                </div>
+                <div class="product-feature">
+                    <img src="businessdigitalcard.png" alt="Business Digital Card Icon">
+                    <div>
+                        <h3>Business Digital Card</h3>
+                        <p>Creates digital cards, facilitating networking and simplifying communication.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-category">
+            <h2>Reporting</h2>
+            <div class="product-category-grid">
+                <div class="product-feature">
+                    <img src="analyticsandreports.png" alt="Analytics and Reports Icon">
+                    <div>
+                        <h3>Analytics and Reports</h3>
+                        <p>Generates insights and reports, aiding in data-driven decision-making.</p>
+                    </div>
+                </div>
+                <div class="product-feature">
+                    <img src="xlextract.png" alt="XL Extract of Reports Icon">
+                    <div>
+                        <h3>XL Extract of Reports</h3>
+                        <p>Exports comprehensive data in Excel for in-depth analysis and presentation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <h3>What is Teamgether?</h3>
+            <p>Teamgether is an app providing quick communication capabilities among team members to solve problems, exchange ideas, and share common issues through a secure environment.</p>
+        </div>
+        <div class="faq-item">
+            <h3>What are the key features of Teamgether?</h3>
+            <p>Teamgether offers features like Announcements, Chat, Polling, Members List, Security, Notifications, Ideas, Graphs, Personal Profile, and Data Export, among others.</p>
+        </div>
+        <div class="faq-item">
+            <h3>How does Teamgether enhance employee engagement?</h3>
+            <p>Teamgether enables employees to participate in chats, polls, and idea sharing, while administrators can manage announcements, discussions, and feedback collection, fostering a culture of active participation and collaboration.</p>
+        </div>
+        <div class=" faq-item">
+            <h3>Is Teamgether customizable?</h3>
+            <p>Yes, Teamgether offers customization options tailored to the specific needs and objectives of a company or association, aligning with unique team structures and workflows.</p>
+        </div>
+        <div class="faq-item">
+            <h3>How does Teamgether address customer experience?</h3>
+            <p>Teamgether extends beyond internal team engagement by providing specific features for addressing customer experience issues, enabling companies to leverage employee insights to solve customer problems and shape customer journeys.</p>
+        </div>
+        <div class="faq-item">
+            <h3>What kind of rewards and incentives does Teamgether offer?</h3>
+            <p>Teamgether includes reward plans that motivate and encourage participation by recognizing and valuing contributions, fostering healthy competition, and enhancing member satisfaction and retention.</p>
+        </div>
+        <div class="faq-item">
+            <h3>How does Teamgether ensure data security and compliance?</h3>
+            <p>Teamgether is GDPR compliant and operates servers in the EU to ensure data protection. It also allows administrators to control and manage user access, ensuring a secure environment for team communication and collaboration.</p>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing-section">
+        <h2>Pricing Plans</h2>
+        <p class="availability">Our pricing plans will be available soon. Stay tuned for more details!</p>
+        <div class="pricing-bundles">
+            <div class="bundle">
+                <h3>Basic Bundle</h3>
+                <p>Essential features for small teams and startups.</p>
+                <p class="bundle-status">Available Soon</p>
+            </div>
+            <div class="bundle">
+                <h3>Professional Bundle</h3>
+                <p>Advanced features for growing teams and businesses.</p>
+                <p class="bundle-status">Available Soon</p>
+            </div>
+            <div class="bundle">
+                <h3>Enterprise Bundle</h3>
+                <p>Comprehensive solutions for large organizations and enterprises.</p>
+                <p class="bundle-status">Available Soon</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="book-demo" class="book-demo-section">
+        <h2>Book a Demo</h2>
+        <p>Schedule a demo with us and see how Teamgether can help your team collaborate more effectively.</p>
+        <form class="demo-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="text" name="company" placeholder="Your Company" required>
+            <input type="text" name="position" placeholder="Your Position" required>
+            <input type="tel" name="phone" placeholder="Your Phone Number" required>
+            <textarea name="message" placeholder="Message" rows="5" required></textarea>
+            <button type="submit">Book a Demo</button>
+        </form>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-info">
+            <img src="contactus.png" alt="Contact Us">
+            <h3>Online Services</h3>
+            <p>Email: support@teamgether.com</p>
+            <h3>Online Contact</h3>
+            <p>Phone (USA): +1 234 567 890</p>
+            <p>Phone (UK): +44 123 456 7890</p>
+            <h3>Office Address</h3>
+            <p>123 Main Street, Leicester, LE1 1AB, United Kingdom</p>
+        </div>
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <p>Let's get in touch!</p>
+            <form>
+                <input type="text" name="first-name" placeholder="First Name" required>
+                <input type="text" name="last-name" placeholder="Last Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="text" name="subject" placeholder="Subject" required>
+                <textarea name="message" placeholder="Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+    
+
+    <footer>
+        <p>&copy; 2024 Teamgether.</p>
+    </footer>
+</body>
+</html>
