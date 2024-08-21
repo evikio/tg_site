@@ -6,7 +6,7 @@
     <title>Teamgether</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Poppins, Arial, sans-serif;
             margin: 20px; 
             padding: 0;
             color: #212A47;
@@ -36,8 +36,11 @@
             color: #212A47;
             margin: 0 15px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: normal;
             position: relative;
+        }
+        nav a.bold {
+            font-weight: bold;
         }
         .dropdown {
             position: relative;
@@ -67,6 +70,7 @@
         .language-selector {
             position: relative;
             display: inline-block;
+            margin-left: auto;
         }
         .language-selector img {
             width: 30px;
@@ -144,10 +148,16 @@
             justify-content: center;
         }
         .hero {
-            text-align: center;
+            text-align: left;
             padding: 100px 20px;
             background-color: #F8F8F8;
             margin-top: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hero-text {
+            max-width: 600px;
         }
         .hero h1 {
             font-size: 2.5em;
@@ -175,6 +185,10 @@
             background-color: #FFFFFF;
             color: #86D2EA;
             border: 1px solid #86D2EA;
+        }
+        .hero-image {
+            max-width: 400px;
+            height: auto;
         }
         .overview-section {
             text-align: center;
@@ -257,6 +271,7 @@
         .faq-section {
             padding: 50px 20px;
             background-color: #F8F8F8;
+            display: none; /* Απόκρυψη του FAQ αρχικά */
         }
         .faq-section h2 {
             text-align: center;
@@ -269,15 +284,23 @@
         .faq-item h3 {
             font-size: 1.5em;
             color: #212A47;
+            cursor: pointer;
         }
         .faq-item p {
+            display: none; /* Απόκρυψη των απαντήσεων αρχικά */
             color: #464E63;
             line-height: 1.6;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .faq-item:hover p, .faq-item h3:focus + p, .faq-item h3:active + p {
+            display: block; /* Εμφάνιση της απάντησης όταν ο χρήστης περάσει το ποντίκι ή κάνει κλικ */
         }
         .pricing-section {
             padding: 50px 20px;
             background-color: #FFFFFF;
             text-align: center;
+            display: none; /* Απόκρυψη του Pricing αρχικά */
         }
         .pricing-section h2 {
             color: #212A47;
@@ -333,6 +356,10 @@
         }
         .contact-info p {
             color: #464E63;
+        }
+        .contact-info img {
+            width: 20px; /* Smaller size for icons */
+            margin-right: 10px;
         }
         .contact-form {
             max-width: 45%;
@@ -424,81 +451,160 @@
     </style>
 </head>
 <body>
+    <!-- Αρχική Σελίδα (Home) -->
     <header>
-        <img src="mainlogo.png" alt="Company Logo">
+        <a href="#home"><img src="mainlogo.png" alt="Company Logo"></a>
         <nav>
             <div class="dropdown">
-                <a href="#" class="dropbtn">Product</a>
+                <a href="#" class="dropbtn bold">Products</a>
                 <div class="dropdown-content">
                     <a href="#overview">Overview</a>
                     <a href="#services">Services</a>
+                    <a href="#industries">Industries</a>
                 </div>
             </div>
             <a href="#faq">FAQ</a>
             <a href="#about-us">About Us</a>
             <a href="#pricing">Pricing</a>
             <a href="#contact">Contact</a>
+            <a href="#login" class="bold">Log in</a>
             <a href="#book-demo" class="cta-button">Book a Demo</a>
             <div class="language-selector">
-                <img src="englishflag.png" alt="English Flag">
+                <img src="globeicon.png" alt="Globe Icon">
                 <div class="dropdown-content">
+                    <a href="#"><img src="englishflag.png" alt="English Flag"></a>
                     <a href="#"><img src="greekflag.png" alt="Greek Flag"></a>
                 </div>
             </div>
         </nav>
     </header>
 
-    <!-- Company ID Section -->
-    <div class="company-id-section">
-        <p>Using Teamgether? Enter your Company ID here</p>
-        <div class="company-id-input">
-            <input type="text" placeholder="Company ID">
-            <button>→</button>
+    <section id="home">
+        <div class="hero">
+            <div class="hero-text">
+                <h1>Running teams efficiently and effectively, both locally and globally has never been easier.</h1>
+                <p>Create a secure and simple environment providing quick communication capabilities among team members to solve problems, exchange ideas, and share common issues.</p>
+                <div class="cta-buttons">
+                    <a href="#book-demo" class="cta-button">Book a Demo</a>
+                    <a href="#overview" class="cta-button cta-button-outline">
+                        How it Works <img src="play-icon.png" alt="Play Icon" class="play-icon" style="margin-left: 5px; vertical-align: middle;">
+                    </a>
+                </div>
+            </div>
+            <img src="heroimage.png" alt="Hero Image" class="hero-image">
         </div>
-    </div>
 
-    <div class="hero">
-        <h1>Running teams efficiently and effectively, both locally and globally has never been easier.</h1>
-        <div class="cta-buttons">
-            <a href="#book-demo" class="cta-button">Book a Demo</a>
-            <a href="#overview" class="cta-button cta-button-outline">Product Overview</a>
-        </div>
-    </div>
-    <section id="overview" class="overview-section">
-        <img src="mainlogo.png" alt="Company Logo">
-        <p>
-            is an app providing quick communication capabilities among team members to <br>
-            solve problems, exchange ideas, and share common issues through a secure environment.
-        </p>
+        <!-- Υπόλοιπα τμήματα της αρχικής σελίδας εκτός από FAQ, Services, και Pricing -->
+        <section id="overview" class="overview-section">
+            <img src="mainlogo.png" alt="Company Logo">
+            <p>
+                is an app providing quick communication capabilities among team members to <br>
+                solve problems, exchange ideas, and share common issues through a secure environment.
+            </p>
+        </section>
+
+        <section id="why-us" class="why-us-section">
+            <h2>Why Us</h2>
+            <div class="why-us-feature">
+                <h3>1. Specific Focus on Team Engagement</h3>
+                <p>stands out by specifically focusing on team communication, collaboration, and engagement.</p>
+            </div>
+            <div class="why-us-feature">
+                <h3>2. Advanced Features and Simplicity</h3>
+                <p>Offers features that foster participation, feedback, and community-building in a simple environment.</p>
+            </div>
+            <div class="why-us-feature">
+                <h3>3. Tailored for Employee Feedback & Idea Generation</h3>
+                <p>Emphasizes gathering feedback and generating impactful ideas through structured processes.</p>
+            </div>
+            <div class="why-us-feature">
+                <h3>4. Unique Customer Experience Focus</h3>
+                <p>Extends beyond internal engagement by addressing customer experience and solving problems.</p>
+            </div>
+            <div class="why-us-feature">
+                <h3>5. Custom-build Configuration</h3>
+                <p>Offers customization tailored to unique team structures, workflows, and engagement goals.</p>
+            </div>
+            <div class="why-us-feature">
+                <h3>6. Feedback and Engage in Meaningful Discussions</h3>
+                <p>Encourages adoption and involvement, leading to higher engagement within teams.</p>
+            </div>
+        </section>
+
+        <section id="book-demo" class="book-demo-section">
+            <h2>Book a Demo</h2>
+            <p>Schedule a demo with us and see how Teamgether can help your team collaborate more effectively.</p>
+            <form class="demo-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="text" name="company" placeholder="Your Company" required>
+                <input type="text" name="position" placeholder="Your Position" required>
+                <input type="tel" name="phone" placeholder="Your Phone Number" required>
+                <textarea name="message" placeholder="Message" rows="5" required></textarea>
+                <button type="submit">Book a Demo</button>
+            </form>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="contact-info">
+                <img src="contactimage.png" alt="Contact Us" style="width: 100px; height: auto;"> 
+                <h3>Online Services</h3>
+                <p><img src="mail.png" alt="Mail Icon"> info@teamgether.com</p>
+                <h3>Online Contact</h3>
+                <p><img src="telephone.png" alt="Phone Icon"> +1 234 567 890</p>
+                <p><img src="telephone.png" alt="Phone Icon"> +44 123 456 7890</p>
+                <h3>Office Address</h3>
+                <p><img src="location.png" alt="Location Icon"> 123 Main Street, Leicester, LE1 1AB, United Kingdom</p>
+            </div>
+            <div class="contact-form">
+                <h2>Contact Us</h2>
+                <p>Let's get in touch!</p>
+                <form>
+                    <input type="text" name="first-name" placeholder="First Name" required>
+                    <input type="text" name="last-name" placeholder="Last Name" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <textarea name="message" placeholder="Message" rows="5" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
     </section>
-    <section id="why-us" class="why-us-section">
-        <h2>Why Us</h2>
-        <div class="why-us-feature">
-            <h3>1. Specific Focus on Team Engagement</h3>
-            <p>stands out by specifically focusing on team communication, collaboration, and engagement.</p>
+
+    <!-- Τμήματα που θα εμφανίζονται μόνο όταν τα επιλέξει ο χρήστης -->
+    <section id="faq" class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <h3 tabindex="0">What is Teamgether?</h3>
+            <p>Teamgether is an app providing quick communication capabilities among team members to solve problems, exchange ideas, and share common issues through a secure environment.</p>
         </div>
-        <div class="why-us-feature">
-            <h3>2. Advanced Features and Simplicity</h3>
-            <p>Offers features that foster participation, feedback, and community-building in a simple environment.</p>
+        <div class="faq-item">
+            <h3 tabindex="0">What are the key features of Teamgether?</h3>
+            <p>Teamgether offers features like Announcements, Chat, Polling, Members List, Security, Notifications, Ideas, Graphs, Personal Profile, and Data Export, among others.</p>
         </div>
-        <div class="why-us-feature">
-            <h3>3. Tailored for Employee Feedback & Idea Generation</h3>
-            <p>Emphasizes gathering feedback and generating impactful ideas through structured processes.</p>
+        <div class="faq-item">
+            <h3 tabindex="0">How does Teamgether enhance employee engagement?</h3>
+            <p>Teamgether enables employees to participate in chats, polls, and idea sharing, while administrators can manage announcements, discussions, and feedback collection, fostering a culture of active participation and collaboration.</p>
         </div>
-        <div class="why-us-feature">
-            <h3>4. Unique Customer Experience Focus</h3>
-            <p>Extends beyond internal engagement by addressing customer experience and solving problems.</p>
+        <div class=" faq-item">
+            <h3 tabindex="0">Is Teamgether customizable?</h3>
+            <p>Yes, Teamgether offers customization options tailored to the specific needs and objectives of a company or association, aligning with unique team structures and workflows.</p>
         </div>
-        <div class="why-us-feature">
-            <h3>5. Custom-build Configuration</h3>
-            <p>Offers customization tailored to unique team structures, workflows, and engagement goals.</p>
+        <div class="faq-item">
+            <h3 tabindex="0">How does Teamgether address customer experience?</h3>
+            <p>Teamgether extends beyond internal team engagement by providing specific features for addressing customer experience issues, enabling companies to leverage employee insights to solve customer problems and shape customer journeys.</p>
         </div>
-        <div class="why-us-feature">
-            <h3>6. Feedback and Engage in Meaningful Discussions</h3>
-            <p>Encourages adoption and involvement, leading to higher engagement within teams.</p>
+        <div class="faq-item">
+            <h3 tabindex="0">What kind of rewards and incentives does Teamgether offer?</h3>
+            <p>Teamgether includes reward plans that motivate and encourage participation by recognizing and valuing contributions, fostering healthy competition, and enhancing member satisfaction and retention.</p>
+        </div>
+        <div class="faq-item">
+            <h3 tabindex="0">How does Teamgether ensure data security and compliance?</h3>
+            <p>Teamgether is GDPR compliant and operates servers in the EU to ensure data protection. It also allows administrators to control and manage user access, ensuring a secure environment for team communication and collaboration.</p>
         </div>
     </section>
-    <section id="services" class="product-section">
+
+    <section id="services" class="product-section" style="display:none;">
         <div class="product-category">
             <h2>Engagement</h2>
             <div class="product-category-grid">
@@ -674,39 +780,14 @@
                         <p>Exports comprehensive data in Excel for in-depth analysis and presentation.</p>
                     </div>
                 </div>
+                <div class="product-feature">
+                    <img src="businessreview.png" alt="Business Review Icon">
+                    <div>
+                        <h3>Quarterly Executive Business Review</h3>
+                        <p>Provides detailed quarterly reviews to assist in strategic decision-making.</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <section id="faq" class="faq-section">
-        <h2>Frequently Asked Questions</h2>
-        <div class="faq-item">
-            <h3>What is Teamgether?</h3>
-            <p>Teamgether is an app providing quick communication capabilities among team members to solve problems, exchange ideas, and share common issues through a secure environment.</p>
-        </div>
-        <div class="faq-item">
-            <h3>What are the key features of Teamgether?</h3>
-            <p>Teamgether offers features like Announcements, Chat, Polling, Members List, Security, Notifications, Ideas, Graphs, Personal Profile, and Data Export, among others.</p>
-        </div>
-        <div class="faq-item">
-            <h3>How does Teamgether enhance employee engagement?</h3>
-            <p>Teamgether enables employees to participate in chats, polls, and idea sharing, while administrators can manage announcements, discussions, and feedback collection, fostering a culture of active participation and collaboration.</p>
-        </div>
-        <div class=" faq-item">
-            <h3>Is Teamgether customizable?</h3>
-            <p>Yes, Teamgether offers customization options tailored to the specific needs and objectives of a company or association, aligning with unique team structures and workflows.</p>
-        </div>
-        <div class="faq-item">
-            <h3>How does Teamgether address customer experience?</h3>
-            <p>Teamgether extends beyond internal team engagement by providing specific features for addressing customer experience issues, enabling companies to leverage employee insights to solve customer problems and shape customer journeys.</p>
-        </div>
-        <div class="faq-item">
-            <h3>What kind of rewards and incentives does Teamgether offer?</h3>
-            <p>Teamgether includes reward plans that motivate and encourage participation by recognizing and valuing contributions, fostering healthy competition, and enhancing member satisfaction and retention.</p>
-        </div>
-        <div class="faq-item">
-            <h3>How does Teamgether ensure data security and compliance?</h3>
-            <p>Teamgether is GDPR compliant and operates servers in the EU to ensure data protection. It also allows administrators to control and manage user access, ensuring a secure environment for team communication and collaboration.</p>
         </div>
     </section>
 
@@ -732,48 +813,38 @@
         </div>
     </section>
 
-    <section id="book-demo" class="book-demo-section">
-        <h2>Book a Demo</h2>
-        <p>Schedule a demo with us and see how Teamgether can help your team collaborate more effectively.</p>
-        <form class="demo-form">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <input type="text" name="company" placeholder="Your Company" required>
-            <input type="text" name="position" placeholder="Your Position" required>
-            <input type="tel" name="phone" placeholder="Your Phone Number" required>
-            <textarea name="message" placeholder="Message" rows="5" required></textarea>
-            <button type="submit">Book a Demo</button>
-        </form>
-    </section>
+    <script>
+        // Λειτουργία εμφάνισης των τμημάτων όταν ο χρήστης επιλέγει τις κατηγορίες
+        document.querySelector('a[href="#faq"]').addEventListener('click', function() {
+            document.getElementById('faq').style.display = 'block';
+            document.getElementById('services').style.display = 'none';
+            document.getElementById('pricing').style.display = 'none';
+        });
 
-    <section id="contact" class="contact-section">
-        <div class="contact-info">
-            <img src="contactus.png" alt="Contact Us">
-            <h3>Online Services</h3>
-            <p>Email: support@teamgether.com</p>
-            <h3>Online Contact</h3>
-            <p>Phone (USA): +1 234 567 890</p>
-            <p>Phone (UK): +44 123 456 7890</p>
-            <h3>Office Address</h3>
-            <p>123 Main Street, Leicester, LE1 1AB, United Kingdom</p>
-        </div>
-        <div class="contact-form">
-            <h2>Contact Us</h2>
-            <p>Let's get in touch!</p>
-            <form>
-                <input type="text" name="first-name" placeholder="First Name" required>
-                <input type="text" name="last-name" placeholder="Last Name" required>
-                <input type="email" name="email" placeholder="Email Address" required>
-                <input type="text" name="subject" placeholder="Subject" required>
-                <textarea name="message" placeholder="Message" rows="5" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
-    </section>
-    
+        document.querySelector('a[href="#pricing"]').addEventListener('click', function() {
+            document.getElementById('pricing').style.display = 'block';
+            document.getElementById('faq').style.display = 'none';
+            document.getElementById('services').style.display = 'none';
+        });
+
+        document.querySelector('a[href="#services"]').addEventListener('click', function() {
+            document.getElementById('services').style.display = 'block';
+            document.getElementById('faq').style.display = 'none';
+            document.getElementById('pricing').style.display = 'none';
+        });
+
+        // Για να εμφανίζεται το home section όταν ο χρήστης πατάει στο logo
+        document.querySelector('a[href="#home"]').addEventListener('click', function() {
+            document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('faq').style.display = 'none';
+            document.getElementById('services').style.display = 'none';
+            document.getElementById('pricing').style.display = 'none';
+        });
+    </script>
 
     <footer>
-        <p>&copy; 2024 Teamgether.</p>
+        <p>&copy; 2024 Teamgether. All rights reserved.</p>
+        <p><a href="#">Terms</a> | <a href="#">Privacy Policy</a> | <a href="#">Cookie Policy</a></p>
     </footer>
 </body>
 </html>
