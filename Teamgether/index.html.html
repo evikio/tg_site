@@ -448,6 +448,47 @@
             padding: 20px 0;
             border-top: 1px solid #E0E0E0;
         }
+        .about-us-section {
+            padding: 50px 20px;
+            background-color: #FFFFFF;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .about-us-section h2 {
+            text-align: center;
+            color: #212A47;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        .about-us-section h3 {
+            color: #212A47;
+            margin-top: 20px;
+            font-size: 1.5em;
+        }
+        .about-us-section p {
+            color: #464E63;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .industries-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .industry-item {
+            background-color: #F8F8F8;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .industry-item h3 {
+            color: #212A47;
+            margin-bottom: 10px;
+        }
+        .industry-item p {
+            color: #464E63;
+            line-height: 1.4;
+        }
     </style>
 </head>
 <body>
@@ -478,6 +519,15 @@
             </div>
         </nav>
     </header>
+
+    <!-- Company ID Section -->
+    <div class="company-id-section">
+        <p>Using Teamgether? Enter your Company ID here</p>
+        <div class="company-id-input">
+            <input type="text" placeholder="Company ID">
+            <button>→</button>
+        </div>
+    </div>
 
     <section id="home">
         <div class="hero">
@@ -791,46 +841,111 @@
         </div>
     </section>
 
-    <section id="pricing" class="pricing-section">
-        <h2>Pricing Plans</h2>
-        <p class="availability">Our pricing plans will be available soon. Stay tuned for more details!</p>
-        <div class="pricing-bundles">
-            <div class="bundle">
-                <h3>Basic Bundle</h3>
-                <p>Essential features for small teams and startups.</p>
-                <p class="bundle-status">Available Soon</p>
+    <section id="industries" class="product-section" style="display:none;">
+        <div class="industries-list">
+            <div class="industry-item">
+                <h3>Healthcare</h3>
+                <p>Streamline staff management, facilitate interdepartmental communication, and improve collaboration with tools like the Organizational Chart and Announcements. Leverage analytics to enhance service delivery.</p>
             </div>
-            <div class="bundle">
-                <h3>Professional Bundle</h3>
-                <p>Advanced features for growing teams and businesses.</p>
-                <p class="bundle-status">Available Soon</p>
+            <div class="industry-item">
+                <h3>Technology and Startups</h3>
+                <p>Manage teams, share ideas, and foster innovation through Brainstorming and Chats. Document storage ensures information is accessible to all.</p>
             </div>
-            <div class="bundle">
-                <h3>Enterprise Bundle</h3>
-                <p>Comprehensive solutions for large organizations and enterprises.</p>
-                <p class="bundle-status">Available Soon</p>
+            <div class="industry-item">
+                <h3>Retail</h3>
+                <p>Strengthen communication between stores and headquarters, organize events, and recognize employees with awards. Use polls and feedback tools to improve customer service.</p>
+            </div>
+            <div class="industry-item">
+                <h3>Construction</h3>
+                <p>Organize projects, facilitate communication among project teams, and recognize field achievements. Goal and value management tools align teams with business objectives.</p>
+            </div>
+            <div class="industry-item">
+                <h3>Banking</h3>
+                <p>Improve team management and performance feedback, foster communication across branches, and track business goals. Utilize analytics for detailed financial reporting and executive reviews.</p>
+            </div>
+            <div class="industry-item">
+                <h3>Non-Profit Organizations</h3>
+                <p>Increase engagement with members, manage events, and encourage volunteer participation with recognitions and awards. Document storage and digital business cards help manage donor relationships.</p>
+            </div>
+            <div class="industry-item">
+                <h3>Media</h3>
+                <p>Enhance team collaboration, manage creative projects, and organize events. Use the Media Wall and Chats to share ideas and content. Recognize outstanding work with awards and badges.</p>
+            </div>
+            <div class="industry-item">
+                <h3>B2B</h3>
+                <p>Facilitate seamless communication between sales teams and management, manage performance feedback, and track client engagement. Utilize the Knowledge Base for sharing strategies and reporting tools for tracking business growth.</p>
+            </div>
+            <div class="industry-item">
+                <h3>eCommerce</h3>
+                <p>Enhance team collaboration, manage customer service teams, and organize promotional events. Use analytics to monitor sales performance and recognize top performers with awards and badges. Store and manage digital assets securely in Document Storage.</p>
+            </div>
+            <div class="industry-item">
+                <h3>Insurance</h3>
+                <p>Streamline internal communications, manage employee performance, and recognize achievements. Use analytics and reporting tools to track service delivery and client satisfaction.</p>
             </div>
         </div>
     </section>
 
+    <section id="about-us" class="about-us-section" style="display:none;">
+        <h2>About Us</h2>
+        <p>At Teamgether, we are dedicated to revolutionizing the way businesses engage with their teams. Founded on the belief that effective communication and employee engagement are the keys to organizational success, we have developed a platform that integrates seamlessly into a variety of industries, offering tailored solutions that address the unique needs of each sector.</p>
+        
+        <h3>Our Vision</h3>
+        <p>We envision a world where every employee feels valued, every voice is heard, and every team is aligned with their organization’s goals. Our platform is designed to create an environment where collaboration thrives, innovation is encouraged, and achievements are recognized.</p>
+        
+        <h3>What We Do</h3>
+        <p>Teamgether provides a robust set of tools that cover the full spectrum of employee engagement and management. Whether you are in insurance, media, banking, B2B, eCommerce, or any other sector, our platform offers features that help streamline communication, foster team integration, and enhance overall efficiency. From performance feedback systems and talent management groups to digital collaboration spaces and detailed analytics, we provide everything your organization needs to build a motivated, cohesive, and high-performing team.</p>
+        
+        <h3>Why Choose Us?</h3>
+        <p>Our platform stands out because of its adaptability and user-centric design. We don’t believe in a one-size-fits-all approach. Instead, we work closely with our clients to ensure that Teamgether meets their specific needs, helping them overcome industry-specific challenges and achieve their unique business objectives. Our commitment to excellence means that we are constantly updating and refining our platform to incorporate the latest trends in employee engagement and management.</p>
+        
+        <h3>Our Commitment</h3>
+        <p>We are more than just a software provider; we are your partners in building a better workplace. Our team of experts is always available to provide support, offer insights, and help you get the most out of our platform. We are driven by our passion for helping businesses grow by unlocking the full potential of their teams.</p>
+        
+        <h3>Join Us</h3>
+        <p>Join the growing number of organizations that trust Teamgether to transform their workplace culture and improve their team’s performance. Together, we can create an environment where your employees are not just workers, but active contributors to your company’s success.</p>
+    </section>
+
     <script>
         // Λειτουργία εμφάνισης των τμημάτων όταν ο χρήστης επιλέγει τις κατηγορίες
+        document.querySelector('a[href="#industries"]').addEventListener('click', function() {
+            document.getElementById('industries').style.display = 'block';
+            document.getElementById('faq').style.display = 'none';
+            document.getElementById('services').style.display = 'none';
+            document.getElementById('pricing').style.display = 'none';
+            document.getElementById('about-us').style.display = 'none';
+        });
+
         document.querySelector('a[href="#faq"]').addEventListener('click', function() {
             document.getElementById('faq').style.display = 'block';
             document.getElementById('services').style.display = 'none';
             document.getElementById('pricing').style.display = 'none';
+            document.getElementById('industries').style.display = 'none';
+            document.getElementById('about-us').style.display = 'none';
         });
 
         document.querySelector('a[href="#pricing"]').addEventListener('click', function() {
             document.getElementById('pricing').style.display = 'block';
             document.getElementById('faq').style.display = 'none';
             document.getElementById('services').style.display = 'none';
+            document.getElementById('industries').style.display = 'none';
+            document.getElementById('about-us').style.display = 'none';
         });
 
         document.querySelector('a[href="#services"]').addEventListener('click', function() {
             document.getElementById('services').style.display = 'block';
             document.getElementById('faq').style.display = 'none';
             document.getElementById('pricing').style.display = 'none';
+            document.getElementById('industries').style.display = 'none';
+            document.getElementById('about-us').style.display = 'none';
+        });
+
+        document.querySelector('a[href="#about-us"]').addEventListener('click', function() {
+            document.getElementById('about-us').style.display = 'block';
+            document.getElementById('faq').style.display = 'none';
+            document.getElementById('services').style.display = 'none';
+            document.getElementById('pricing').style.display = 'none';
+            document.getElementById('industries').style.display = 'none';
         });
 
         // Για να εμφανίζεται το home section όταν ο χρήστης πατάει στο logo
@@ -839,6 +954,8 @@
             document.getElementById('faq').style.display = 'none';
             document.getElementById('services').style.display = 'none';
             document.getElementById('pricing').style.display = 'none';
+            document.getElementById('industries').style.display = 'none';
+            document.getElementById('about-us').style.display = 'none';
         });
     </script>
 
